@@ -6,6 +6,8 @@ import "rxjs/add/operator/map";
 import { BackendUri } from './settings';
 import { Post } from './post';
 
+import * as moment from 'moment';
+
 @Injectable()
 export class PostService {
 
@@ -29,10 +31,13 @@ export class PostService {
      |   - Filtro por fecha de publicación: publicationDate_lte=x (siendo x la fecha actual)        |
      |   - Ordenación: _sort=publicationDate&_order=DESC                                            |
      |----------------------------------------------------------------------------------------------*/
+    let f_actual = moment(); 
 
     return this._http
-      .get(`${this._backendUri}/posts`)
-      .map((response: Response): Post[] => Post.fromJsonToList(response.json()));
+      .get(`${this._backendUri}/posts?publicationDate_lte=${f_actual}&_sort=publicationDate&_order=DESC`)
+      .map((response: Response): Post[] =>{
+        return Post.fromJsonToList(response.json());  
+      });
   }
 
   getUserPosts(id: number): Observable<Post[]> {
