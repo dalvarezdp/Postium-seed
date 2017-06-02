@@ -16,4 +16,7 @@
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 -->
 
-<post-preview *ngFor="let post of posts" [post]="post"></post-preview>
+<post-preview *ngFor="let post of posts" 
+              [post]="post" 
+              (alSeleccionarPost)="verDetalles($event)">
+</post-preview>
