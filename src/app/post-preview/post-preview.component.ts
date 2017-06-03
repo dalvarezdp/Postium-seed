@@ -28,16 +28,23 @@ export class PostPreviewComponent {
    |------------------------------------------------------------------------------------------------------------------*/
 
    @Output() alSeleccionarPost: EventEmitter<Post>;
+   @Output() alSeleccionarUsuario: EventEmitter<Post>;
 
    constructor() { 
       // Instanciamos el 'EventEmitter'.
       this.alSeleccionarPost = new EventEmitter<Post>();
+      this.alSeleccionarUsuario = new EventEmitter<Post>();
     }
 
    notificarSeleccionPost(post: Post): void{
       // Para notificar, basta con ejecutar la función 'emit' del atributo 'EventEmitter'.
       this.alSeleccionarPost.emit(post);
     } 
+
+   notificarSeleccionUsuario(post: Post): void{
+      // Para notificar, basta con ejecutar la función 'emit' del atributo 'EventEmitter'.
+      this.alSeleccionarUsuario.emit(post);
+    }  
 
   plainTextToHtml(text: string): string {
     return text ? `<p>${text.replace(/\n/gi, "</p><p>")}</p>` : '';

@@ -18,5 +18,6 @@
 
 <post-preview *ngFor="let post of posts" 
               [post]="post" 
-              (alSeleccionarPost)="verDetalles($event)">
+              (alSeleccionarPost)="verDetalles($event)"
+              (alSeleccionarUsuario)="verDetallesUsuario($event)">
 </post-preview>
