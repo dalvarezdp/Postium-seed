@@ -5,6 +5,7 @@ import "rxjs/add/operator/map";
 
 import { BackendUri } from './settings';
 import { Post } from './post';
+import { Category } from './category';
 
 import * as moment from 'moment';
 
@@ -88,9 +89,14 @@ export class PostService {
      |   - Ordenación: _sort=publicationDate&_order=DESC                                                |
      |--------------------------------------------------------------------------------------------------*/
 
+    let f_actual = moment();
+
     return this._http
-      .get(`${this._backendUri}/posts`)
-      .map((response: Response): Post[] => Post.fromJsonToList(response.json()));
+      .get(`${this._backendUri}/posts?publicationDate_lte=${f_actual}&_sort=publicationDate&_order=DESC`)
+      .map((response: Response) => Post.fromJsonToList(response.json()))
+            .map((posts: Post[]) => posts
+                .filter((post: Post) => post.categories
+                    .find((category: Category) => category.id == id)));
   }
 
   getPostDetails(id: number): Observable<Post> {

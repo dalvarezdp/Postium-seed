@@ -32,6 +32,10 @@ export class PostsResolveService implements Resolve<Post[]> {
      | a una categoría, llame a la función 'getCategoryPosts()' del servicio PostService.      |
      | Recuerda mirar en los parámetros de la ruta, a ver qué encuentras.                      |
      |-----------------------------------------------------------------------------------------*/
+     const IdCategoria = route.params['categoryId'];
+      if(IdCategoria){
+          return this._postService.getCategoryPosts(IdCategoria);
+      }
 
     return this._postService.getPosts();
   }
