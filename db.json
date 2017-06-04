@@ -280,6 +280,22 @@
         2
       ],
       "id": 10
+    },
+    {
+      "title": "Prueba",
+      "intro": "Ejemplo de prueba",
+      "body": "Creamos un post para coprobar que funciona correctamente.",
+      "publicationDate": 1496572560000,
+      "categories": [],
+      "author": {
+        "id": 1,
+        "name": "KeepCoder",
+        "username": "keepcoder",
+        "email": "keepcoder@postium.com",
+        "avatar": "assets/images/keepcoder.jpg"
+      },
+      "likes": [],
+      "id": 11
     }
   ],
   "categories": [
